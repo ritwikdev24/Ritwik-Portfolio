@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { 
-  SiHtml5, SiCss3, SiJavascript, SiReact, SiPython, 
+  SiHtml5, SiCss, SiJavascript, SiReact, SiPython, 
   SiNodedotjs, SiMongodb, SiExpress, SiTypescript, 
   SiNextdotjs, SiGit, SiTailwindcss, SiFigma
 } from "react-icons/si"
@@ -20,7 +20,7 @@ const skills = [
 
 const techStack = [
   { name: "HTML5", Icon: SiHtml5, color: "group-hover:text-orange-500" },
-  { name: "CSS3", Icon: SiCss3, color: "group-hover:text-blue-500" },
+  { name: "CSS3", Icon: SiCss, color: "group-hover:text-blue-500" },
   { name: "JavaScript", Icon: SiJavascript, color: "group-hover:text-yellow-400" },
   { name: "TypeScript", Icon: SiTypescript, color: "group-hover:text-blue-600" },
   { name: "React", Icon: SiReact, color: "group-hover:text-cyan-400" },
