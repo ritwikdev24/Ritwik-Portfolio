@@ -1,6 +1,11 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { 
+  SiHtml5, SiCss3, SiJavascript, SiReact, SiPython, 
+  SiNodedotjs, SiMongodb, SiExpress, SiTypescript, 
+  SiNextdotjs, SiGit, SiTailwindcss, SiFigma
+} from "react-icons/si"
 
 const skills = [
   { name: "HTML5", level: 95, color: "from-orange-500 to-orange-600" },
@@ -14,18 +19,18 @@ const skills = [
 ]
 
 const techStack = [
-  { name: "HTML5", icon: "🌐" },
-  { name: "CSS3", icon: "🎨" },
-  { name: "JavaScript", icon: "⚡" },
-  { name: "TypeScript", icon: "📘" },
-  { name: "React", icon: "⚛️" },
-  { name: "Next.js", icon: "▲" },
-  { name: "Node.js", icon: "🟢" },
-  { name: "MongoDB", icon: "🍃" },
-  { name: "Python", icon: "🐍" },
-  { name: "Git", icon: "📦" },
-  { name: "Tailwind", icon: "💨" },
-  { name: "Figma", icon: "🎯" },
+  { name: "HTML5", Icon: SiHtml5, color: "group-hover:text-orange-500" },
+  { name: "CSS3", Icon: SiCss3, color: "group-hover:text-blue-500" },
+  { name: "JavaScript", Icon: SiJavascript, color: "group-hover:text-yellow-400" },
+  { name: "TypeScript", Icon: SiTypescript, color: "group-hover:text-blue-600" },
+  { name: "React", Icon: SiReact, color: "group-hover:text-cyan-400" },
+  { name: "Next.js", Icon: SiNextdotjs, color: "group-hover:text-foreground" },
+  { name: "Node.js", Icon: SiNodedotjs, color: "group-hover:text-green-500" },
+  { name: "MongoDB", Icon: SiMongodb, color: "group-hover:text-green-600" },
+  { name: "Python", Icon: SiPython, color: "group-hover:text-yellow-500" },
+  { name: "Git", Icon: SiGit, color: "group-hover:text-orange-600" },
+  { name: "Tailwind", Icon: SiTailwindcss, color: "group-hover:text-cyan-500" },
+  { name: "Figma", Icon: SiFigma, color: "group-hover:text-pink-500" },
 ]
 
 export function SkillsSection() {
@@ -64,39 +69,46 @@ export function SkillsSection() {
     <section
       id="skills"
       ref={sectionRef}
-      className="py-20 md:py-32 px-4 bg-secondary/30"
+      className="py-24 md:py-36 px-4 section-skills relative"
     >
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-20 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <p className="text-primary font-mono text-sm mb-2">{"// What I know"}</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">My Skills</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          <h2 className={`text-3xl md:text-5xl font-bold mb-4 heading-underline ${isVisible ? 'visible' : ''}`}>
+            My Skills
+          </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full mt-6 animate-gradient" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-16">
           {/* Skill Bars */}
           <div
             className={`space-y-6 transition-all duration-700 delay-200 ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             }`}
           >
-            <h3 className="text-xl font-semibold mb-6">Proficiency</h3>
+            <h3 className="text-xl font-semibold mb-8 text-foreground">Proficiency</h3>
             {skills.map((skill, index) => (
               <div key={skill.name} className="group">
                 <div className="flex justify-between mb-2">
-                  <span className="font-medium text-foreground">{skill.name}</span>
-                  <span className="text-muted-foreground">{animatedLevels[index]}%</span>
+                  <span className="font-medium text-foreground group-hover:text-primary transition-colors">{skill.name}</span>
+                  <span className="text-primary font-mono text-sm">{animatedLevels[index]}%</span>
                 </div>
-                <div className="h-3 bg-secondary rounded-full overflow-hidden">
+                <div className="h-3 bg-secondary/50 rounded-full overflow-hidden skill-bar animate">
                   <div
-                    className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out`}
-                    style={{ width: `${animatedLevels[index]}%` }}
-                  />
+                    className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out relative overflow-hidden`}
+                    style={{ 
+                      width: `${animatedLevels[index]}%`,
+                      boxShadow: animatedLevels[index] > 0 ? `0 0 20px rgba(100, 200, 180, 0.3)` : 'none'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
+                  </div>
                 </div>
               </div>
             ))}
@@ -108,18 +120,18 @@ export function SkillsSection() {
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
             }`}
           >
-            <h3 className="text-xl font-semibold mb-6">Tech Stack</h3>
+            <h3 className="text-xl font-semibold mb-8 text-foreground">Tech Stack</h3>
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
               {techStack.map((tech, index) => (
                 <div
                   key={tech.name}
-                  className={`glass rounded-xl p-4 text-center hover:scale-110 transition-all duration-300 hover:shadow-lg cursor-default ${
+                  className={`glass-card group rounded-2xl p-5 text-center cursor-default ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
                   }`}
                   style={{ transitionDelay: `${index * 50 + 400}ms` }}
                 >
-                  <span className="text-2xl mb-2 block">{tech.icon}</span>
-                  <span className="text-sm font-medium text-foreground">{tech.name}</span>
+                  <tech.Icon className={`text-3xl mb-3 mx-auto text-muted-foreground transition-all duration-300 ${tech.color} group-hover:scale-125`} />
+                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{tech.name}</span>
                 </div>
               ))}
             </div>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { ExternalLink, Github, FolderOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 const projects = [
   {
@@ -86,44 +87,48 @@ export function ProjectsSection() {
     <section
       id="projects"
       ref={sectionRef}
-      className="py-20 md:py-32 px-4"
+      className="py-24 md:py-36 px-4 section-projects relative"
     >
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-20 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <p className="text-primary font-mono text-sm mb-2">{"// My work"}</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Featured Projects</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          <h2 className={`text-3xl md:text-5xl font-bold mb-4 heading-underline ${isVisible ? 'visible' : ''}`}>
+            Featured Projects
+          </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full mt-6 animate-gradient" />
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`group glass rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${
+              className={`project-card group glass-card rounded-3xl overflow-hidden ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
+              <div className="relative h-52 overflow-hidden">
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  fill
+                  className="object-cover project-image"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                  <div className="flex gap-3">
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-6">
+                  <div className="flex gap-4">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-background/80 hover:bg-primary hover:text-primary-foreground transition-colors"
+                      className="p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(100,200,180,0.4)]"
                       aria-label={`View ${project.title} on GitHub`}
                     >
                       <Github className="h-5 w-5" />
@@ -132,7 +137,7 @@ export function ProjectsSection() {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-background/80 hover:bg-primary hover:text-primary-foreground transition-colors"
+                      className="p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(100,200,180,0.4)]"
                       aria-label={`View live demo of ${project.title}`}
                     >
                       <ExternalLink className="h-5 w-5" />
@@ -140,17 +145,17 @@ export function ProjectsSection() {
                   </div>
                 </div>
                 {/* Folder Icon */}
-                <div className="absolute top-4 left-4 p-2 rounded-lg bg-background/80 backdrop-blur-sm">
+                <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-background/80 backdrop-blur-sm border border-border/50 group-hover:border-primary/50 transition-colors">
                   <FolderOpen className="h-5 w-5 text-primary" />
                 </div>
               </div>
 
               {/* Project Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
+              <div className="p-7">
+                <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                <p className="text-muted-foreground text-sm mb-5 line-clamp-3 leading-relaxed">
                   {project.description}
                 </p>
                 {/* Tags */}
@@ -158,7 +163,7 @@ export function ProjectsSection() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary"
+                      className="px-3 py-1.5 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors"
                     >
                       {tag}
                     </span>
@@ -171,14 +176,14 @@ export function ProjectsSection() {
 
         {/* View More Button */}
         <div
-          className={`text-center mt-12 transition-all duration-700 delay-700 ${
+          className={`text-center mt-16 transition-all duration-700 delay-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <Button
             variant="outline"
             size="lg"
-            className="rounded-full px-8 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+            className="btn-glow rounded-full px-10 py-6 border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
             asChild
           >
             <a href="https://github.com" target="_blank" rel="noopener noreferrer">

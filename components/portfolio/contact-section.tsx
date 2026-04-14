@@ -74,44 +74,49 @@ export function ContactSection() {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-20 md:py-32 px-4 bg-secondary/30"
+      className="py-24 md:py-36 px-4 section-contact relative"
     >
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-20 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <p className="text-primary font-mono text-sm mb-2">{"// Let's connect"}</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Get In Touch</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          <h2 className={`text-3xl md:text-5xl font-bold mb-4 heading-underline ${isVisible ? 'visible' : ''}`}>
+            Get In Touch
+          </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full mt-6 animate-gradient" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Info */}
           <div
             className={`transition-all duration-700 delay-200 ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             }`}
           >
-            <h3 className="text-2xl font-semibold mb-6">
+            <h3 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
               {`Let's Build Something Amazing Together`}
             </h3>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-muted-foreground mb-10 leading-relaxed">
               {`I'm always open to discussing new projects, creative ideas, or opportunities to 
               be part of your vision. Feel free to reach out through any of the following channels.`}
             </p>
 
             {/* Contact Details */}
-            <div className="space-y-4 mb-8">
-              {contactInfo.map(({ icon: Icon, label, value, href }) => (
+            <div className="space-y-4 mb-10">
+              {contactInfo.map(({ icon: Icon, label, value, href }, index) => (
                 <div
                   key={label}
-                  className="flex items-center gap-4 p-4 glass rounded-xl hover:shadow-lg transition-all duration-300"
+                  className={`glass-card flex items-center gap-4 p-5 rounded-2xl ${
+                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+                  }`}
+                  style={{ transitionDelay: `${index * 100 + 300}ms` }}
                 >
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Icon className="h-5 w-5 text-primary" />
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(100,200,180,0.3)] transition-shadow">
+                    <Icon className="h-6 w-6 text-primary" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">{label}</p>
@@ -140,7 +145,7 @@ export function ContactSection() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
+                    className="p-4 rounded-2xl bg-secondary/50 backdrop-blur-sm border border-transparent hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(100,200,180,0.4)]"
                     aria-label={label}
                   >
                     <Icon className="h-5 w-5" />
@@ -158,11 +163,11 @@ export function ContactSection() {
           >
             <form
               onSubmit={handleSubmit}
-              className="glass rounded-2xl p-8 space-y-6"
+              className="glass-card rounded-3xl p-8 md:p-10 space-y-6"
             >
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
                     Name
                   </label>
                   <Input
@@ -170,11 +175,11 @@ export function ContactSection() {
                     name="name"
                     placeholder="John Doe"
                     required
-                    className="bg-background/50"
+                    className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl transition-all focus:shadow-[0_0_15px_rgba(100,200,180,0.2)]"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">
                     Email
                   </label>
                   <Input
@@ -183,12 +188,12 @@ export function ContactSection() {
                     type="email"
                     placeholder="john@example.com"
                     required
-                    className="bg-background/50"
+                    className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl transition-all focus:shadow-[0_0_15px_rgba(100,200,180,0.2)]"
                   />
                 </div>
               </div>
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                <label htmlFor="subject" className="block text-sm font-medium mb-2 text-foreground">
                   Subject
                 </label>
                 <Input
@@ -196,11 +201,11 @@ export function ContactSection() {
                   name="subject"
                   placeholder="Project Inquiry"
                   required
-                  className="bg-background/50"
+                  className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl transition-all focus:shadow-[0_0_15px_rgba(100,200,180,0.2)]"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">
                   Message
                 </label>
                 <Textarea
@@ -209,13 +214,13 @@ export function ContactSection() {
                   placeholder="Tell me about your project..."
                   rows={5}
                   required
-                  className="bg-background/50 resize-none"
+                  className="bg-background/50 border-border/50 focus:border-primary resize-none rounded-xl transition-all focus:shadow-[0_0_15px_rgba(100,200,180,0.2)]"
                 />
               </div>
               <Button
                 type="submit"
                 size="lg"
-                className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
+                className="btn-glow w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base transition-all duration-300"
                 disabled={formStatus !== "idle"}
               >
                 {formStatus === "idle" && (

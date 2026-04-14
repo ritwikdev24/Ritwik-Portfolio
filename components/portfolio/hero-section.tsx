@@ -3,8 +3,30 @@
 import { useEffect, useState, useRef } from "react"
 import { Github, Linkedin, Instagram, ArrowDown, FileText, FolderOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 const roles = ["Frontend Developer", "React Developer", "UI/UX Enthusiast", "MERN Stack Developer"]
+
+function FloatingParticles() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div
+          key={i}
+          className="particle"
+          style={{
+            left: `${Math.random() * 100}%`,
+            animationDuration: `${8 + Math.random() * 12}s`,
+            animationDelay: `${Math.random() * 5}s`,
+            width: `${2 + Math.random() * 4}px`,
+            height: `${2 + Math.random() * 4}px`,
+            opacity: 0.3 + Math.random() * 0.4,
+          }}
+        />
+      ))}
+    </div>
+  )
+}
 
 export function HeroSection() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
@@ -44,14 +66,36 @@ export function HeroSection() {
     <section
       id="home"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center pt-20 pb-10 px-4"
+      className="relative min-h-screen flex items-center justify-center pt-20 pb-10 px-4 section-hero overflow-hidden"
     >
+      <FloatingParticles />
+      
       <div className="container mx-auto">
         <div
           className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
+          {/* Profile Photo */}
+          <div 
+            className={`mb-8 flex justify-center transition-all duration-1000 delay-100 ${
+              isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+            }`}
+          >
+            <div className="photo-frame">
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-secondary">
+                <Image
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                  alt="Profile photo"
+                  width={160}
+                  height={160}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+
           {/* Greeting */}
           <p className="text-primary font-mono text-sm md:text-base mb-4 tracking-wider">
             {"// Hello, World! I'm"}
@@ -59,16 +103,16 @@ export function HeroSection() {
 
           {/* Name */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
-            <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text">
+            <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
               John Doe
             </span>
           </h1>
 
           {/* Typing Animation */}
           <div className="h-12 md:h-16 flex items-center justify-center mb-6">
-            <span className="text-xl md:text-3xl lg:text-4xl font-semibold text-primary">
+            <span className="text-xl md:text-3xl lg:text-4xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               {displayedText}
-              <span className="typing-cursor text-accent">|</span>
+              <span className="typing-cursor text-primary">|</span>
             </span>
           </div>
 
@@ -82,7 +126,7 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Button
               size="lg"
-              className="group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
+              className="btn-glow group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base rounded-full transition-all duration-300"
             >
               <FileText className="mr-2 h-5 w-5" />
               Download Resume
@@ -91,7 +135,7 @@ export function HeroSection() {
             <Button
               variant="outline"
               size="lg"
-              className="group px-8 py-6 text-base rounded-full border-2 hover:bg-secondary transition-all duration-300 hover:scale-105"
+              className="group px-8 py-6 text-base rounded-full border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 hover:shadow-[0_0_30px_rgba(100,200,180,0.3)]"
               asChild
             >
               <a href="#projects">
@@ -113,7 +157,7 @@ export function HeroSection() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                className="group p-3 rounded-full bg-secondary/50 backdrop-blur-sm border border-transparent hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(100,200,180,0.4)]"
                 aria-label={label}
               >
                 <Icon className="h-5 w-5" />
@@ -124,10 +168,10 @@ export function HeroSection() {
           {/* Scroll Indicator */}
           <a
             href="#about"
-            className="inline-flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+            className="inline-flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
           >
             <span className="text-sm">Scroll Down</span>
-            <ArrowDown className="h-5 w-5 animate-bounce" />
+            <ArrowDown className="h-5 w-5 animate-bounce group-hover:text-primary" />
           </a>
         </div>
       </div>

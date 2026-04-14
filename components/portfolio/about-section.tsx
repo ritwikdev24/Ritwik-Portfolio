@@ -51,29 +51,31 @@ export function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="py-20 md:py-32 px-4"
+      className="py-24 md:py-36 px-4 section-about relative"
     >
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-20 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <p className="text-primary font-mono text-sm mb-2">{"// Get to know me"}</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">About Me</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          <h2 className={`text-3xl md:text-5xl font-bold mb-4 heading-underline ${isVisible ? 'visible' : ''}`}>
+            About Me
+          </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full mt-6 animate-gradient" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* About Text */}
           <div
             className={`transition-all duration-700 delay-200 ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             }`}
           >
-            <div className="glass rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-2xl font-semibold mb-6 text-foreground">
+            <div className="glass-card rounded-3xl p-8 md:p-10">
+              <h3 className="text-2xl font-semibold mb-6 text-foreground bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text">
                 A Passionate Developer Based in India
               </h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
@@ -97,21 +99,23 @@ export function AboutSection() {
 
           {/* Highlights Grid */}
           <div
-            className={`grid grid-cols-2 gap-4 transition-all duration-700 delay-400 ${
+            className={`grid grid-cols-2 gap-5 transition-all duration-700 delay-400 ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
             }`}
           >
             {highlights.map(({ icon: Icon, title, description }, index) => (
               <div
                 key={title}
-                className="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300 hover:shadow-lg group"
-                style={{ transitionDelay: `${index * 100}ms` }}
+                className={`glass-card rounded-2xl p-6 group cursor-default transition-all duration-500 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+                }`}
+                style={{ transitionDelay: `${index * 100 + 400}ms` }}
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Icon className="h-6 w-6 text-primary" />
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(100,200,180,0.3)]">
+                  <Icon className="h-7 w-7 text-primary" />
                 </div>
-                <h4 className="font-semibold text-foreground mb-1">{title}</h4>
-                <p className="text-sm text-muted-foreground">{description}</p>
+                <h4 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
               </div>
             ))}
           </div>
