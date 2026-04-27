@@ -41,7 +41,7 @@ export function HeroSection() {
 
   useEffect(() => {
     const currentRole = roles[currentRoleIndex]
-    
+
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         if (displayedText.length < currentRole.length) {
@@ -69,23 +69,21 @@ export function HeroSection() {
       className="relative min-h-screen flex items-center justify-center pt-20 pb-10 px-4 section-hero overflow-hidden"
     >
       <FloatingParticles />
-      
+
       <div className="container mx-auto">
         <div
-          className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
         >
           {/* Profile Photo */}
-          <div 
-            className={`mb-8 flex justify-center transition-all duration-1000 delay-100 ${
-              isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
-            }`}
+          <div
+            className={`mb-8 flex justify-center transition-all duration-1000 delay-100 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+              }`}
           >
             <div className="photo-frame">
               <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-secondary">
                 <Image
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                  src="/profile.jpg"
                   alt="Profile photo"
                   width={160}
                   height={160}
@@ -104,7 +102,7 @@ export function HeroSection() {
           {/* Name */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
             <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
-              John Doe
+              Ritwik Kanna
             </span>
           </h1>
 
@@ -118,7 +116,7 @@ export function HeroSection() {
 
           {/* Description */}
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed text-pretty">
-            A passionate fresher crafting beautiful, responsive, and user-friendly web experiences. 
+            A passionate fresher crafting beautiful, responsive, and user-friendly web experiences.
             I love turning ideas into reality through clean code and creative design.
           </p>
 

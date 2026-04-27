@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { 
   SiHtml5, SiCss, SiJavascript, SiReact, SiPython, 
-  SiNodedotjs, SiMongodb, SiExpress, SiTypescript, 
-  SiNextdotjs, SiGit, SiTailwindcss, SiFigma
+  SiNodedotjs, SiMongodb, SiExpress, SiGit, SiMysql, SiBootstrap
 } from "react-icons/si"
 
 const skills = [
@@ -22,15 +21,14 @@ const techStack = [
   { name: "HTML5", Icon: SiHtml5, color: "group-hover:text-orange-500" },
   { name: "CSS3", Icon: SiCss, color: "group-hover:text-blue-500" },
   { name: "JavaScript", Icon: SiJavascript, color: "group-hover:text-yellow-400" },
-  { name: "TypeScript", Icon: SiTypescript, color: "group-hover:text-blue-600" },
   { name: "React", Icon: SiReact, color: "group-hover:text-cyan-400" },
-  { name: "Next.js", Icon: SiNextdotjs, color: "group-hover:text-foreground" },
   { name: "Node.js", Icon: SiNodedotjs, color: "group-hover:text-green-500" },
+  { name: "Express.js", Icon: SiExpress, color: "group-hover:text-foreground" },
   { name: "MongoDB", Icon: SiMongodb, color: "group-hover:text-green-600" },
+  { name: "MySQL", Icon: SiMysql, color: "group-hover:text-blue-600" },
+  { name: "Bootstrap", Icon: SiBootstrap, color: "group-hover:text-purple-600" },
   { name: "Python", Icon: SiPython, color: "group-hover:text-yellow-500" },
   { name: "Git", Icon: SiGit, color: "group-hover:text-orange-600" },
-  { name: "Tailwind", Icon: SiTailwindcss, color: "group-hover:text-cyan-500" },
-  { name: "Figma", Icon: SiFigma, color: "group-hover:text-pink-500" },
 ]
 
 export function SkillsSection() {

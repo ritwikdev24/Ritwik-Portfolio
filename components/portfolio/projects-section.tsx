@@ -33,33 +33,7 @@ const projects = [
     github: "https://github.com",
     live: "https://example.com",
   },
-  {
-    title: "Portfolio Website",
-    description:
-      "A modern, animated portfolio website showcasing projects and skills with smooth animations and dark mode support.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    github: "https://github.com",
-    live: "https://example.com",
-  },
-  {
-    title: "Blog Platform",
-    description:
-      "A content management system for blogging with markdown support, categories, and SEO optimization features.",
-    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=400&fit=crop",
-    tags: ["Next.js", "MDX", "Prisma", "PostgreSQL"],
-    github: "https://github.com",
-    live: "https://example.com",
-  },
-  {
-    title: "Chat Application",
-    description:
-      "A real-time chat application with private messaging, group chats, and emoji support using WebSockets.",
-    image: "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=600&h=400&fit=crop",
-    tags: ["React", "Socket.io", "Node.js", "MongoDB"],
-    github: "https://github.com",
-    live: "https://example.com",
-  },
+
 ]
 
 export function ProjectsSection() {
@@ -92,9 +66,8 @@ export function ProjectsSection() {
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <div
-          className={`text-center mb-20 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className={`text-center mb-20 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
         >
           <p className="text-primary font-mono text-sm mb-2">{"// My work"}</p>
           <h2 className={`text-3xl md:text-5xl font-bold mb-4 heading-underline ${isVisible ? 'visible' : ''}`}>
@@ -108,9 +81,8 @@ export function ProjectsSection() {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`project-card group glass-card rounded-3xl overflow-hidden ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
+              className={`project-card group glass-card rounded-3xl overflow-hidden ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Project Image */}
@@ -176,9 +148,8 @@ export function ProjectsSection() {
 
         {/* View More Button */}
         <div
-          className={`text-center mt-16 transition-all duration-700 delay-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className={`text-center mt-16 transition-all duration-700 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
         >
           <Button
             variant="outline"
