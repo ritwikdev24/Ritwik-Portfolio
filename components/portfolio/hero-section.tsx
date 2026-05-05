@@ -90,98 +90,103 @@ export function HeroSection() {
 
       <div className="container mx-auto">
         <div
-          className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          className={`flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 max-w-6xl mx-auto transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
         >
-          {/* Profile Photo */}
+          {/* Left Side - Info */}
+          <div className="flex-1 w-full text-center lg:text-left">
+            {/* Greeting */}
+            <p className="text-primary font-mono text-sm md:text-base mb-4 tracking-wider">
+              {"// Hello, World! I'm"}
+            </p>
+
+            {/* Name */}
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
+              <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
+                Ritwik Kanna
+              </span>
+            </h1>
+
+            {/* Typing Animation */}
+            <div className="h-12 md:h-16 flex items-center justify-center lg:justify-start mb-6">
+              <span className="text-xl md:text-3xl lg:text-4xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                {displayedText}
+                <span className="typing-cursor text-primary">|</span>
+              </span>
+            </div>
+
+            {/* Description */}
+            <p className="text-muted-foreground text-base md:text-lg mb-10 leading-relaxed text-pretty">
+              A passionate fresher crafting beautiful, responsive, and user-friendly web experiences.
+              I love turning ideas into reality through clean code and creative design.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12">
+              <Button
+                size="lg"
+                className="btn-glow group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base rounded-full transition-all duration-300"
+              >
+                <FileText className="mr-2 h-5 w-5" />
+                Download Resume
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="group px-8 py-6 text-base rounded-full border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 hover:shadow-[0_0_30px_rgba(100,200,180,0.3)]"
+                asChild
+              >
+                <a href="#projects">
+                  <FolderOpen className="mr-2 h-5 w-5" />
+                  View Projects
+                </a>
+              </Button>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center justify-center lg:justify-start gap-4">
+              {[
+                { icon: Github, href: "https://github.com", label: "GitHub" },
+                { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+                { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+              ].map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 rounded-full bg-secondary/50 backdrop-blur-sm border border-transparent hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(100,200,180,0.4)]"
+                  aria-label={label}
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Side - Profile Photo */}
           <div
-            className={`mb-8 flex justify-center transition-all duration-1000 delay-100 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+            className={`flex-1 w-full flex justify-center lg:justify-end transition-all duration-1000 delay-100 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
               }`}
           >
             <div className="photo-frame">
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-secondary">
+              <div className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden bg-secondary">
                 <Image
                   src="/profile.jpg"
                   alt="Profile photo"
-                  width={160}
-                  height={160}
+                  width={192}
+                  height={192}
                   className="w-full h-full object-cover"
                   priority
                 />
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Greeting */}
-          <p className="text-primary font-mono text-sm md:text-base mb-4 tracking-wider">
-            {"// Hello, World! I'm"}
-          </p>
-
-          {/* Name */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
-            <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
-              Ritwik Kanna
-            </span>
-          </h1>
-
-          {/* Typing Animation */}
-          <div className="h-12 md:h-16 flex items-center justify-center mb-6">
-            <span className="text-xl md:text-3xl lg:text-4xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              {displayedText}
-              <span className="typing-cursor text-primary">|</span>
-            </span>
-          </div>
-
-          {/* Description */}
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed text-pretty">
-            A passionate fresher crafting beautiful, responsive, and user-friendly web experiences.
-            I love turning ideas into reality through clean code and creative design.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <Button
-              size="lg"
-              className="btn-glow group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base rounded-full transition-all duration-300"
-            >
-              <FileText className="mr-2 h-5 w-5" />
-              Download Resume
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="group px-8 py-6 text-base rounded-full border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 hover:shadow-[0_0_30px_rgba(100,200,180,0.3)]"
-              asChild
-            >
-              <a href="#projects">
-                <FolderOpen className="mr-2 h-5 w-5" />
-                View Projects
-              </a>
-            </Button>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center justify-center gap-4 mb-16">
-            {[
-              { icon: Github, href: "https://github.com", label: "GitHub" },
-              { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-              { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-            ].map(({ icon: Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group p-3 rounded-full bg-secondary/50 backdrop-blur-sm border border-transparent hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(100,200,180,0.4)]"
-                aria-label={label}
-              >
-                <Icon className="h-5 w-5" />
-              </a>
-            ))}
-          </div>
-
-          {/* Scroll Indicator */}
+        {/* Scroll Indicator */}
+        <div className="flex justify-center mt-16">
           <a
             href="#about"
             className="inline-flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
