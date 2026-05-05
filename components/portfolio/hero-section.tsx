@@ -7,23 +7,29 @@ import Image from "next/image"
 
 const roles = ["Frontend Developer", "React Developer", "UI/UX Enthusiast", "MERN Stack Developer"]
 
-// Pre-generate consistent particle data to avoid hydration issues
-const generateParticleData = () => {
-  const particles = []
-  for (let i = 0; i < 20; i++) {
-    particles.push({
-      left: (i * 5) % 100,
-      duration: 8 + (i * 0.6) % 12,
-      delay: (i * 0.25) % 5,
-      width: 2 + (i * 0.2) % 4,
-      height: 2 + (i * 0.15) % 4,
-      opacity: 0.3 + (i * 0.02) % 0.4,
-    })
-  }
-  return particles
-}
-
-const PARTICLES = generateParticleData()
+// Hardcoded consistent particle data to avoid hydration issues
+const PARTICLES = [
+  { left: 0, duration: 8, delay: 0, width: 2, height: 2, opacity: 0.3 },
+  { left: 5, duration: 8.6, delay: 0.25, width: 2.2, height: 2.15, opacity: 0.32 },
+  { left: 10, duration: 9.2, delay: 0.5, width: 2.4, height: 2.3, opacity: 0.34 },
+  { left: 15, duration: 9.8, delay: 0.75, width: 2.6, height: 2.45, opacity: 0.36 },
+  { left: 20, duration: 10.4, delay: 1, width: 2.8, height: 2.6, opacity: 0.38 },
+  { left: 25, duration: 11, delay: 1.25, width: 3, height: 2.75, opacity: 0.4 },
+  { left: 30, duration: 11.6, delay: 1.5, width: 3.2, height: 2.9, opacity: 0.42 },
+  { left: 35, duration: 12.2, delay: 1.75, width: 3.4, height: 3.05, opacity: 0.44 },
+  { left: 40, duration: 12.8, delay: 2, width: 3.6, height: 3.2, opacity: 0.46 },
+  { left: 45, duration: 13.4, delay: 2.25, width: 3.8, height: 3.35, opacity: 0.48 },
+  { left: 50, duration: 14, delay: 2.5, width: 4, height: 3.5, opacity: 0.5 },
+  { left: 55, duration: 14.6, delay: 2.75, width: 3.8, height: 3.35, opacity: 0.48 },
+  { left: 60, duration: 15.2, delay: 3, width: 3.6, height: 3.2, opacity: 0.46 },
+  { left: 65, duration: 15.8, delay: 3.25, width: 3.4, height: 3.05, opacity: 0.44 },
+  { left: 70, duration: 16.4, delay: 3.5, width: 3.2, height: 2.9, opacity: 0.42 },
+  { left: 75, duration: 17, delay: 3.75, width: 3, height: 2.75, opacity: 0.4 },
+  { left: 80, duration: 17.6, delay: 4, width: 2.8, height: 2.6, opacity: 0.38 },
+  { left: 85, duration: 18.2, delay: 4.25, width: 2.6, height: 2.45, opacity: 0.36 },
+  { left: 90, duration: 18.8, delay: 4.5, width: 2.4, height: 2.3, opacity: 0.34 },
+  { left: 95, duration: 19.4, delay: 4.75, width: 2.2, height: 2.15, opacity: 0.32 },
+]
 
 function FloatingParticles() {
   return (
