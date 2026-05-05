@@ -7,20 +7,38 @@ import Image from "next/image"
 
 const roles = ["Frontend Developer", "React Developer", "UI/UX Enthusiast", "MERN Stack Developer"]
 
+// Pre-generate consistent particle data to avoid hydration issues
+const generateParticleData = () => {
+  const particles = []
+  for (let i = 0; i < 20; i++) {
+    particles.push({
+      left: (i * 5) % 100,
+      duration: 8 + (i * 0.6) % 12,
+      delay: (i * 0.25) % 5,
+      width: 2 + (i * 0.2) % 4,
+      height: 2 + (i * 0.15) % 4,
+      opacity: 0.3 + (i * 0.02) % 0.4,
+    })
+  }
+  return particles
+}
+
+const PARTICLES = generateParticleData()
+
 function FloatingParticles() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {Array.from({ length: 20 }).map((_, i) => (
+      {PARTICLES.map((particle, i) => (
         <div
           key={i}
           className="particle"
           style={{
-            left: `${Math.random() * 100}%`,
-            animationDuration: `${8 + Math.random() * 12}s`,
-            animationDelay: `${Math.random() * 5}s`,
-            width: `${2 + Math.random() * 4}px`,
-            height: `${2 + Math.random() * 4}px`,
-            opacity: 0.3 + Math.random() * 0.4,
+            left: `${particle.left}%`,
+            animationDuration: `${particle.duration}s`,
+            animationDelay: `${particle.delay}s`,
+            width: `${particle.width}px`,
+            height: `${particle.height}px`,
+            opacity: particle.opacity,
           }}
         />
       ))}
