@@ -50,7 +50,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <a
             href="#home"
-            className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity"
           >
             {"<Ritwik Kanna />"}
           </a>
@@ -61,7 +61,7 @@ export function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className={`nav-link relative text-sm font-medium transition-all duration-300 hover:text-primary ${activeSection === link.href.slice(1)
+                className={`nav-link relative text-base sm:text-lg md:text-xl font-medium transition-all duration-300 hover:text-primary ${activeSection === link.href.slice(1)
                     ? "text-primary"
                     : "text-muted-foreground"
                   } ${activeSection === link.href.slice(1) ? "active" : ""}`}
@@ -100,7 +100,7 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`text-sm font-medium transition-all duration-300 hover:text-primary px-3 py-2 rounded-lg hover:bg-secondary/50 ${activeSection === link.href.slice(1)
+                className={`text-base sm:text-lg font-medium transition-all duration-300 hover:text-primary px-3 py-2 rounded-lg hover:bg-secondary/50 ${activeSection === link.href.slice(1)
                     ? "text-primary bg-primary/10"
                     : "text-muted-foreground"
                   }`}

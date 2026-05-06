@@ -10,19 +10,19 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "johndoe@email.com",
-    href: "mailto:johndoe@email.com",
+    value: "rithvikkoppisetti@gmail.com",
+    href: "mailto:rithvikkoppisetti@gmail.com",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 98765 43210",
-    href: "tel:+919876543210",
+    value: "+91 xxxxxxxxxx",
+    href: "tel:+91xxxxxxxxxx",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "Mumbai, India",
+    value: "Hyderabad, India",
     href: null,
   },
 ]
@@ -56,19 +56,31 @@ export function ContactSection() {
   }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setFormStatus("sending")
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+  e.preventDefault()
+  setFormStatus("sending")
+
+  const formData = new FormData(e.currentTarget)
+
+  const response = await fetch("https://formspree.io/f/mrblaqwe", {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json",
+    },
+  })
+
+  if (response.ok) {
     setFormStatus("sent")
-    
-    // Reset form after 3 seconds
+    e.currentTarget.reset()
+
     setTimeout(() => {
       setFormStatus("idle")
-      ;(e.target as HTMLFormElement).reset()
     }, 3000)
+  } else {
+    alert("Something went wrong!")
+    setFormStatus("idle")
   }
+}
 
   return (
     <section
@@ -137,7 +149,6 @@ export function ContactSection() {
 
             {/* Social Links */}
             <div>
-              <p className="text-sm text-muted-foreground mb-4">Follow me on</p>
               <div className="flex gap-4">
                 {socialLinks.map(({ icon: Icon, href, label }) => (
                   <a
@@ -173,7 +184,7 @@ export function ContactSection() {
                   <Input
                     id="name"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder="Your Name"
                     required
                     className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl transition-all focus:shadow-[0_0_15px_rgba(100,200,180,0.2)]"
                   />
@@ -186,7 +197,7 @@ export function ContactSection() {
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder="Enter your email"
                     required
                     className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl transition-all focus:shadow-[0_0_15px_rgba(100,200,180,0.2)]"
                   />
@@ -199,7 +210,7 @@ export function ContactSection() {
                 <Input
                   id="subject"
                   name="subject"
-                  placeholder="Project Inquiry"
+                  placeholder="Project Discussion"
                   required
                   className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl transition-all focus:shadow-[0_0_15px_rgba(100,200,180,0.2)]"
                 />
@@ -211,7 +222,7 @@ export function ContactSection() {
                 <Textarea
                   id="message"
                   name="message"
-                  placeholder="Tell me about your project..."
+                  placeholder="Write your message..."
                   rows={5}
                   required
                   className="bg-background/50 border-border/50 focus:border-primary resize-none rounded-xl transition-all focus:shadow-[0_0_15px_rgba(100,200,180,0.2)]"

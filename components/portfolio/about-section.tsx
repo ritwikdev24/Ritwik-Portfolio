@@ -75,23 +75,19 @@ export function AboutSection() {
             }`}
           >
             <div className="glass-card rounded-3xl p-8 md:p-10">
-              <h3 className="text-2xl font-semibold mb-6 text-foreground bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text">
-                A Passionate Developer Based in India
+              <h3 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text">
+  A Passionate Developer Based in India
               </h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  {`Hi there! I'm a fresh graduate with a burning passion for web development. 
-                  My journey into coding started with curiosity and has grown into a full-blown 
-                  love affair with creating digital experiences.`}
+                   {`I'm a passionate MERN Stack Developer focused on building modern, responsive, and user-friendly web applications.`}
                 </p>
                 <p>
-                  {`I specialize in building responsive, user-friendly web applications using 
-                  modern technologies like React.js, Next.js, and the MERN stack. I believe 
-                  in writing clean, efficient code that not only works but is also a joy to maintain.`}
-                </p>
+                  {`Skilled in React.js, Node.js, MongoDB, and modern frontend development. I enjoy turning ideas into clean digital experiences while continuously learning new technologies.`}
+                 </p>
+                
                 <p>
-                  {`When I'm not coding, you'll find me exploring new technologies, contributing 
-                  to open-source projects, or sharing my learnings with the developer community.`}
+                   {`Beyond coding, I love exploring tech trends, bikes, sports, and sharing knowledge with the developer community.`}
                 </p>
               </div>
             </div>

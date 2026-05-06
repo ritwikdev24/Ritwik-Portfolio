@@ -20,13 +20,13 @@ export function Footer() {
             href="#home"
             className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
           >
-            {"<Dev />"}
+            {"<Ritwik Kanna/>"}
           </a>
 
           {/* Copyright */}
           <p className="text-sm text-muted-foreground flex items-center gap-1">
             © {currentYear} Made with{" "}
-            <Heart className="h-4 w-4 text-red-500 fill-red-500" /> by John Doe
+            <Heart className="h-4 w-4 text-red-500 fill-red-500" /> by Ritwik Kanna
           </p>
 
           {/* Social Links */}

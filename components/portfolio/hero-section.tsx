@@ -100,14 +100,15 @@ export function HeroSection() {
             }`}
         >
           {/* Left Side - Info */}
-          <div className="flex-1 w-full text-center lg:text-left">
+          {/* Left Side - Info */}
+            <div className="flex-1 w-full text-center lg:text-left order-2 lg:order-1">
             {/* Greeting */}
             <p className="text-primary font-mono text-sm md:text-base mb-4 tracking-wider">
               {"// Hello, World! I'm"}
             </p>
 
             {/* Name */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
               <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
                 Ritwik Kanna
               </span>
@@ -115,16 +116,15 @@ export function HeroSection() {
 
             {/* Typing Animation */}
             <div className="h-12 md:h-16 flex items-center justify-center lg:justify-start mb-6">
-              <span className="text-xl md:text-3xl lg:text-4xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <span className="text-lg md:text-2xl lg:text-3xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 {displayedText}
                 <span className="typing-cursor text-primary">|</span>
               </span>
             </div>
 
             {/* Description */}
-            <p className="text-muted-foreground text-base md:text-lg mb-10 leading-relaxed text-pretty">
-              A passionate fresher crafting beautiful, responsive, and user-friendly web experiences.
-              I love turning ideas into reality through clean code and creative design.
+            <p className="text-muted-foreground text-sm md:text-base mb-10 leading-relaxed text-pretty">
+              Passionate MERN Stack Developer and frontend enthusiast focused on building responsive, user-friendly web applications. I enjoy turning ideas into real-world projects through clean code and creative problem-solving.
             </p>
 
             {/* CTA Buttons */}
@@ -150,40 +150,42 @@ export function HeroSection() {
               </Button>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center justify-center lg:justify-start gap-4">
-              {[
-                { icon: Github, href: "https://github.com", label: "GitHub" },
-                { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-                { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-              ].map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-3 rounded-full bg-secondary/50 backdrop-blur-sm border border-transparent hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(100,200,180,0.4)]"
-                  aria-label={label}
-                >
-                  <Icon className="h-5 w-5" />
-                </a>
-              ))}
-            </div>
-          </div>
-
+            
+            {/* Social Links - Hidden for now */}
+{/* 
+<div className="flex items-center justify-center lg:justify-start gap-4">
+  {[
+    { icon: Github, href: "https://github.com", label: "GitHub" },
+    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+  ].map(({ icon: Icon, href, label }) => (
+    <a
+      key={label}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group p-3 rounded-full bg-secondary/50 backdrop-blur-sm border border-transparent hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(100,200,180,0.4)]"
+      aria-label={label}
+    >
+      <Icon className="h-5 w-5" />
+    </a>
+  ))}
+</div>
+*/}
+</div>
           {/* Right Side - Profile Photo */}
           <div
-            className={`flex-1 w-full flex justify-center lg:justify-end transition-all duration-1000 delay-100 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+            className={`flex-1 w-full flex justify-center lg:justify-end order-1 lg:order-2 transition-all duration-1000 delay-100 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
               }`}
           >
-            <div className="photo-frame">
-              <div className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden bg-secondary">
+            <div className="photo-frame items-center justify-center">
+              <div className="w-48 h-48 md:w-60 md:h-60 lg:w-[340px] lg:h-[340px] rounded-full overflow-hidden bg-secondary">
                 <Image
                   src="/profile.jpg"
                   alt="Profile photo"
                   width={192}
                   height={192}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top scale-100"
                   priority
                 />
               </div>
