@@ -27,7 +27,7 @@ const projects = [
     image: "/Projects/nxtwatch.png",
     tags: ["React", "Routing", "Context API", "JWT"],
     github: "",
-    live: "",
+    live: "https://nxtwatchritwik.ccbp.tech",
     credentials: {
       username: "rahul",
       password: "rahul@2021",
