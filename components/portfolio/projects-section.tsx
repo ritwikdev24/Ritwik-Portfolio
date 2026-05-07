@@ -103,7 +103,7 @@ export function ProjectsSection() {
                   className="object-cover project-image"
                 />
                 {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-6">
                   <div className="flex gap-4">
                     {project.github && (
                       <a

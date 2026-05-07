@@ -55,32 +55,45 @@ export function ContactSection() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault()
+
+  const form = e.currentTarget
+
   setFormStatus("sending")
 
-  const formData = new FormData(e.currentTarget)
+  try {
+    const formData = new FormData(form)
 
-  const response = await fetch("https://formspree.io/f/mrblaqwe", {
-    method: "POST",
-    body: formData,
-    headers: {
-      Accept: "application/json",
-    },
-  })
+    const response = await fetch("https://formspree.io/f/mkoyvjgd", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    })
 
-  if (response.ok) {
-    setFormStatus("sent")
-    e.currentTarget.reset()
+    const data = await response.json()
+    console.log(data)
 
-    setTimeout(() => {
+    if (response.ok) {
+      setFormStatus("sent")
+
+      form.reset()
+
+      setTimeout(() => {
+        setFormStatus("idle")
+      }, 3000)
+    } else {
+      console.error(data)
       setFormStatus("idle")
-    }, 3000)
-  } else {
-    alert("Something went wrong!")
+    }
+  } catch (error) {
+    console.error("Form Error:", error)
     setFormStatus("idle")
   }
 }
+
 
   return (
     <section
@@ -233,20 +246,55 @@ export function ContactSection() {
                 />
               </div>
               <Button
-                type="submit"
-                size="lg"
-                className="btn-glow w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base transition-all duration-300"
-                disabled={formStatus !== "idle"}
+              type="submit"
+              size="lg"
+              disabled={formStatus !== "idle"}
+              className={`w-full rounded-full py-6 text-base transition-all duration-500 overflow-hidden relative group
+              ${
+                formStatus === "sent"
+                  ? "bg-gradient-to-r from-[#00c853] via-[#00e676] to-[#00c853] text-black font-semibold scale-[1.03] shadow-[0_0_45px_rgba(0,230,118,0.6)]"
+                  : "btn-glow bg-primary hover:bg-primary/90 text-primary-foreground"
+              }`}
               >
-                {formStatus === "idle" && (
-                  <>
-                    <Send className="mr-2 h-5 w-5" />
-                    Send Message
-                  </>
-                )}
-                {formStatus === "sending" && "Sending..."}
-                {formStatus === "sent" && "Message Sent!"}
-              </Button>
+            <div className="flex items-center justify-center gap-2">
+              {formStatus === "idle" && (
+                <>
+                  <Send className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  Send Message
+                </>
+              )}
+
+              {formStatus === "sending" && (
+                <>
+                  <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Sending...
+                </>
+              )}
+
+    {formStatus === "sent" && (
+      <div className="flex items-center gap-2 animate-in fade-in zoom-in duration-300">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5 animate-bounce"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={3}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M5 13l4 4L19 7"
+          />
+        </svg>
+
+       <span className="font-semibold tracking-wide">
+          Successfully Sent
+        </span>
+      </div>
+    )}
+  </div>
+</Button>
             </form>
           </div>
         </div>
