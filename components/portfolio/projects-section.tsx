@@ -7,33 +7,42 @@ import Image from "next/image"
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Jobby App",
     description:
-      "A full-stack e-commerce application with user authentication, product management, and payment integration using the MERN stack.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-    tags: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
-    github: "https://github.com",
-    live: "https://example.com",
-  },
-  {
-    title: "Task Management App",
-    description:
-      "A collaborative task management tool with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-    tags: ["React", "Firebase", "Tailwind CSS", "DnD Kit"],
-    github: "https://github.com",
-    live: "https://example.com",
-  },
-  {
-    title: "Weather Dashboard",
-    description:
-      "A beautiful weather application that displays current conditions, forecasts, and weather maps using external APIs.",
-    image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=600&h=400&fit=crop",
-    tags: ["JavaScript", "API", "CSS3", "Chart.js"],
-    github: "https://github.com",
-    live: "https://example.com",
+      "A job search platform where users can search jobs, view details, and filter jobs based on salary and employment type.",
+    image: "/Projects/jobby.png",
+    tags: ["React", "JWT", "REST API", "CSS"],
+    github: "",
+    live: "https://jobbybyritwik.ccbp.tech",
+    credentials: {
+      username: "rahul",
+      password: "rahul@2021",
+    },
   },
 
+  {
+    title: "Nxt Watch",
+    description:
+      "A YouTube-inspired video platform with trending videos, gaming section, saved videos, and dark/light mode.",
+    image: "/Projects/nxtwatch.png",
+    tags: ["React", "Routing", "Context API", "JWT"],
+    github: "",
+    live: "",
+    credentials: {
+      username: "rahul",
+      password: "rahul@2021",
+    },
+  },
+
+  {
+    title: "Rock Paper Scissors",
+    description:
+      "An interactive game built using React with score tracking, game logic, and responsive design.",
+    image: "/Projects/games.png",
+    tags: ["React", "Game Logic", "CSS"],
+    github: "",
+    live: "https://ritwikgames.ccbp.tech",
+  },
 ]
 
 export function ProjectsSection() {
@@ -96,15 +105,17 @@ export function ProjectsSection() {
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-6">
                   <div className="flex gap-4">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(100,200,180,0.4)]"
-                      aria-label={`View ${project.title} on GitHub`}
-                    >
-                      <Github className="h-5 w-5" />
-                    </a>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(100,200,180,0.4)]"
+                        aria-label={`View ${project.title} on GitHub`}
+                      >
+                        <Github className="h-5 w-5" />
+                      </a>
+)}
                     <a
                       href={project.live}
                       target="_blank"
@@ -130,6 +141,23 @@ export function ProjectsSection() {
                 <p className="text-muted-foreground text-sm mb-5 line-clamp-3 leading-relaxed">
                   {project.description}
                 </p>
+
+                {project.credentials && (
+                <div className="mb-4 p-3 rounded-xl bg-primary/10 border border-primary/20">
+                  <p className="text-xs font-semibold text-primary mb-1">
+                    Demo Credentials
+                  </p>
+
+                  <p className="text-xs text-muted-foreground">
+                    Username: {project.credentials.username}
+                  </p>
+
+                  <p className="text-xs text-muted-foreground">
+                    Password: {project.credentials.password}
+                  </p>
+                </div>
+)}
+
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
@@ -147,22 +175,25 @@ export function ProjectsSection() {
         </div>
 
         {/* View More Button */}
-        <div
-          className={`text-center mt-16 transition-all duration-700 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-        >
-          <Button
-            variant="outline"
-            size="lg"
-            className="btn-glow rounded-full px-10 py-6 border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
-            asChild
-          >
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2 h-5 w-5" />
-              View More on GitHub
-            </a>
-          </Button>
-        </div>
+        {false && (
+  <div
+    className={`text-center mt-16 transition-all duration-700 delay-700 ${
+      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+    }`}
+  >
+    <Button
+      variant="outline"
+      size="lg"
+      className="btn-glow rounded-full px-10 py-6 border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
+      asChild
+    >
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+        <Github className="mr-2 h-5 w-5" />
+        View More on GitHub
+      </a>
+    </Button>
+  </div>
+)}
       </div>
     </section>
   )

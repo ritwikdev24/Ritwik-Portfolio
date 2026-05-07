@@ -130,13 +130,16 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12">
               <Button
-                size="lg"
-                className="btn-glow group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base rounded-full transition-all duration-300"
-              >
-                <FileText className="mr-2 h-5 w-5" />
-                Download Resume
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              </Button>
+  size="lg"
+  asChild
+  className="btn-glow group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base rounded-full transition-all duration-300"
+>
+  <a href="/Ritwik_Full_Stack_Developer.pdf" download>
+    <FileText className="mr-2 h-5 w-5" />
+    Download Resume
+    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+  </a>
+</Button>
               <Button
                 variant="outline"
                 size="lg"

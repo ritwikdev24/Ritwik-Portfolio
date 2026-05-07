@@ -28,9 +28,9 @@ const contactInfo = [
 ]
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+  { icon: Github, href: "#", label: "GitHub", disabled: true },
+  { icon: Linkedin, href: "#", label: "LinkedIn", disabled: true },
+  { icon: Instagram, href: "#", label: "Instagram", disabled: true },
 ]
 
 export function ContactSection() {
@@ -149,21 +149,25 @@ export function ContactSection() {
 
             {/* Social Links */}
             <div>
-              <div className="flex gap-4">
-                {socialLinks.map(({ icon: Icon, href, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-4 rounded-2xl bg-secondary/50 backdrop-blur-sm border border-transparent hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(100,200,180,0.4)]"
-                    aria-label={label}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                ))}
-              </div>
-            </div>
+  {/* 
+<div>
+  <div className="flex gap-4">
+    {socialLinks.map(({ icon: Icon, href, label }) => (
+      <a
+        key={label}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="p-4 rounded-2xl bg-secondary/50 backdrop-blur-sm border border-transparent hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(100,200,180,0.4)]"
+        aria-label={label}
+      >
+        <Icon className="h-5 w-5" />
+      </a>
+    ))}
+  </div>
+</div>
+*/}
+</div>
           </div>
 
           {/* Contact Form */}

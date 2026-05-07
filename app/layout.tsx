@@ -15,11 +15,27 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'John Doe | Frontend Developer Portfolio',
-  description: 'A passionate frontend developer specializing in React.js, Next.js, and the MERN stack. Explore my projects and get in touch.',
-  keywords: ['Frontend Developer', 'React', 'Next.js', 'MERN Stack', 'Web Developer', 'Portfolio'],
-  authors: [{ name: 'John Doe' }],
-  creator: 'John Doe',
+  title: 'Ritwik | MERN Stack Developer Portfolio',
+
+  description:
+    'Portfolio of Ritwik Kanna, a MERN Stack Developer skilled in React.js, Next.js, Node.js, Express.js, MongoDB, and frontend development.',
+
+  keywords: [
+    'Ritwik',
+    'MERN Stack Developer',
+    'React Developer',
+    'Next.js Developer',
+    'Frontend Developer',
+    'Node.js',
+    'MongoDB',
+    'Portfolio',
+    'Web Developer',
+  ],
+
+  authors: [{ name: 'Ritwik' }],
+
+  creator: 'Ritwik Kanna Koppisetti',
+
   icons: {
     icon: [
       {
@@ -37,17 +53,37 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
+
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    title: 'John Doe | Frontend Developer Portfolio',
-    description: 'A passionate frontend developer specializing in React.js, Next.js, and the MERN stack.',
-    siteName: 'John Doe Portfolio',
+
+    title: 'Ritwik Kanna | MERN Stack Developer Portfolio',
+
+    description:
+      'Explore the portfolio of Ritwik, a MERN Stack Developer building modern web applications with React, Next.js, Node.js, and MongoDB.',
+
+    siteName: 'Ritwik Kanna Portfolio',
+
+    images: [
+      {
+        url: '/preview.png',
+        width: 1200,
+        height: 630,
+        alt: 'Ritwik Portfolio Preview',
+      },
+    ],
   },
+
   twitter: {
     card: 'summary_large_image',
-    title: 'John Doe | Frontend Developer Portfolio',
-    description: 'A passionate frontend developer specializing in React.js, Next.js, and the MERN stack.',
+
+    title: 'Ritwik | MERN Stack Developer Portfolio',
+
+    description:
+      'Portfolio of Ritwik showcasing MERN stack projects and frontend development skills.',
+
+    images: ['/preview.png'],
   },
 }
 

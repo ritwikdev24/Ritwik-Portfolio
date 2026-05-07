@@ -4,7 +4,7 @@ import { Github, Linkedin, Instagram, Heart } from "lucide-react"
 
 const socialLinks = [
   { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/ritwikkanna", label: "LinkedIn" },
   { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
 ]
 
