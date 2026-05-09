@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   description:
     'Portfolio of Ritwik Kanna, a MERN Stack Developer skilled in React.js, Next.js, Node.js, Express.js, MongoDB, and frontend development.',
 
+    verification: {
+  google: "d7W0SNx7dt4oOPJ6lF4dIPZ0hmmnLN9Rqd0KOhRg44s",
+},
+    
+
   keywords: [
     'Ritwik',
     'MERN Stack Developer',
