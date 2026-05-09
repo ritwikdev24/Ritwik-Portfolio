@@ -188,7 +188,7 @@ export function HeroSection() {
                   alt="Profile photo"
                   width={192}
                   height={192}
-                  className="w-full h-full object-cover object-top scale-100"
+                  className="w-full h-full object-cover object-top scale-200 -translate-y-6"
                   priority
                 />
               </div>
