@@ -110,7 +110,7 @@ export function HeroSection() {
             {/* Name */}
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
               <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
-                Ritwik Kanna
+                Ritwik
               </span>
             </h1>
 
@@ -188,7 +188,7 @@ export function HeroSection() {
                   alt="Profile photo"
                   width={192}
                   height={192}
-                  className="w-full h-full object-cover object-top scale-200 -translate-y-6"
+                  className="w-full h-full object-cover object-top scale-110"
                   priority
                 />
               </div>
