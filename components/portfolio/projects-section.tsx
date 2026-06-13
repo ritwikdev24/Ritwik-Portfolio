@@ -6,6 +6,16 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 const projects = [
+{
+  title: "ThinkBoard",
+  description:
+    "A full-stack MERN note-taking application featuring CRUD operations, MongoDB Atlas integration, Redis-based rate limiting, and a responsive user interface.",
+  image: "/Projects/thinkboard.png",
+  tags: ["React", "Node.js", "MongoDB", "Redis"],
+  github: "https://github.com/ritwikdev24/mern-thinkboard",
+  live: "https://mern-thinkboard-delta.vercel.app",
+},
+
   {
     title: "Jobby App",
     description:
